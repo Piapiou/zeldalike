@@ -1,0 +1,12 @@
+- Déplacement du personnage
+- Attaque avec projectiles
+
+- Gestion de la barre de vie
+- Gestion d'un inventaire
+
+- Navigation de salle en salle
+- Éléments de décor interactifs (boutons, leviers, ...)
+
+- Ennemi attaquant par projectiles
+- Mort d'un ennemi -> Récompense aléatoire
+
