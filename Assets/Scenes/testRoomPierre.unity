@@ -927,7 +927,7 @@ MonoBehaviour:
   arrowPrefab: {fileID: 1000012457913912, guid: b349afb5322cb854a8d68d671d13f016,
     type: 2}
   player: {fileID: 1914099989}
-  unlockedItem: 
+  unlockedItem: 000000000000000000000000
 --- !u!4 &1210970398
 Transform:
   m_ObjectHideFlags: 0
