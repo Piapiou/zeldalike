@@ -17,6 +17,7 @@ public class EnemyDeath : MonoBehaviour {
 	}
 
 	public void kill(){
+		Destroy (this.gameObject.GetComponent<CircleCollider2D> ());
 		anim.SetBool("dying", true);
 		Destroy (this.gameObject, animDeath.length);
 	}
