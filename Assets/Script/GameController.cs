@@ -61,10 +61,6 @@ public class GameController : MonoBehaviour {
     void InitItem()
     {
         itemList = new Item[numItem];
-        for (int i = 0; i < numItem; i++)
-        {
-            unlockedItem[i] = false;
-        } 
 
         // Initialisation item Arc.
         Arc arc = new Arc();

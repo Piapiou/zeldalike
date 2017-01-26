@@ -89,8 +89,6 @@ public class playerController : MonoBehaviour {
             Destroy(UIHeart[numHeartDisplayed--]);
         }
 
-        Debug.Log(numHeartDisplayed);
-
         for (int i = 0; i < numHeartDisplayed; i++)
         {
             Transform fullHeart = UIHeart[i].transform.FindChild("fullHeart");
