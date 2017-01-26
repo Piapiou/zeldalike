@@ -3,7 +3,7 @@ using System.Collections;
 
 public class arrowController : MonoBehaviour {
 
-    public int direction = 0;
+    public int direction = 0;// N = 0 ; O = 1 ; S = 2 ; E = 3 //
     public float speed;
     public Rigidbody2D rb;
     public Animator anim;
@@ -38,13 +38,13 @@ public class arrowController : MonoBehaviour {
                 vel.y = speed;
                 break;
             case 1:
-                vel.y = -speed;
+                vel.x = speed;
                 break;
             case 2:
-                vel.x = -speed;
+                vel.y = -speed;
                 break;
             case 3:
-                vel.x = speed;
+                vel.x = -speed;
                 break;
             default:
                 break;
@@ -54,8 +54,6 @@ public class arrowController : MonoBehaviour {
 
 
         Debug.Log((player.transform.position - this.transform.position).sqrMagnitude);
-        if ((player.transform.position - this.transform.position).sqrMagnitude > 30)
-            Destroy(gameObject);
 
     }
 

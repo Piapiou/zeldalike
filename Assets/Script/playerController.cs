@@ -18,7 +18,7 @@ public class playerController : MonoBehaviour {
     public int maxHealth = 16;
     public int health = 16;
 
-    public int direction;
+    public int direction; // N = 0 ; O = 1 ; S = 2 ; E = 3 //
 
     // Use this for initialization
     void Start () {
@@ -51,24 +51,21 @@ public class playerController : MonoBehaviour {
 
         if (vel.x > 0)
         {
-            direction = 3;
-            anim.SetInteger("Direction", 3);
+            direction = 1;
         }
         else if (vel.x < 0)
         {
-            direction = 2;
-            anim.SetInteger("Direction", 2);
+            direction = 3;
         }
         else if (vel.y > 0)
         {
             direction = 0;
-            anim.SetInteger("Direction", 0);
         }
         else if (vel.y < 0)
         {
-            direction = 1;
-            anim.SetInteger("Direction", 1);
+            direction = 2;
         }
+        anim.SetInteger("Direction", direction);
         rb.velocity = vel;
     }
 

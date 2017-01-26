@@ -15,6 +15,10 @@ public class GameController : MonoBehaviour {
 
     public bool[] unlockedItem;
 
+    public GameObject UIItem1;
+    public GameObject UIItem2;
+    public Sprite blankSprite;
+
     private Item[] itemList;
 
     private int activeObject1 = -1;
@@ -54,6 +58,7 @@ public class GameController : MonoBehaviour {
         {
             Time.timeScale = 1.0f;
             CheckActiveItem();
+            UpdateUI();
         }
 
     }
@@ -179,5 +184,18 @@ public class GameController : MonoBehaviour {
 
         if (Input.GetKeyUp(KeyCode.X) && activeObject2 != -1)
             itemList[activeObject2].ButtonPressedUp();
+    }
+
+    void UpdateUI()
+    {
+        if (activeObject1 != -1)
+            UIItem1.GetComponent<Image>().sprite = itemsInventory[activeObject1].transform.FindChild("Sprite").GetComponent<Image>().sprite;
+        else
+            UIItem1.GetComponent<Image>().sprite = blankSprite;
+
+        if (activeObject2 != -1)
+            UIItem2.GetComponent<Image>().sprite = itemsInventory[activeObject2].transform.FindChild("Sprite").GetComponent<Image>().sprite;
+        else
+            UIItem2.GetComponent<Image>().sprite = blankSprite;
     }
 }
