@@ -3,9 +3,13 @@
 
 - Gestion de la barre de vie
 - Gestion d'un inventaire
+-- Epee : Une attaque a courte portée
+-- Bouclier : Stopper projectile
+-- Fleche : Envoie de projectile blessant les ennemis
+-- Bombe : Objet explosant et faisant des dégats dans une zone après un delai
 
 - Navigation de salle en salle
-- Éléments de décor interactifs (boutons, leviers, ...)
+- Éléments de décor interactifs (boutons, leviers, bloc destructibles, ...)
 
 - Ennemi attaquant par projectiles
 - Mort d'un ennemi -> Récompense aléatoire

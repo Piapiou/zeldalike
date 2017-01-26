@@ -20,18 +20,18 @@ TagManager:
   - 
   - 
   - 
+  - Decors
   - 
   - 
   - 
   - 
   - 
+  - FriendProjectile
   - 
   - 
   - 
   - 
-  - 
-  - 
-  - 
+  - Player
   - 
   - 
   - 
@@ -40,4 +40,7 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Ui
+    uniqueID: 931021043
     locked: 0
