@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scenes/deletethis.unity
+- path: Assets/Scenes/testRoomPierre.unity
   isLoaded: 1
   isActive: 1
