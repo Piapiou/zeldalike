@@ -10,6 +10,8 @@ public class EnemyMovement : MonoBehaviour {
 
 	public Rigidbody2D rb;
 
+	public Animator anim;
+
 
 	// Use this for initialization
 	void Start () {
@@ -23,6 +25,7 @@ public class EnemyMovement : MonoBehaviour {
 	void ChooseRandomDirection() {
 		int rand = (int)(Random.value * 4);
 		this.dir = rand;
+		anim.SetInteger("dir", dir);
 	}
 
 	void MoveInDirection(int _dir) {
@@ -49,6 +52,7 @@ public class EnemyMovement : MonoBehaviour {
 
 	void MovingLoop(){
 		moving = !moving;
+		anim.SetBool("moving", moving);
 		MovingBehaviour ();
 	}
 
