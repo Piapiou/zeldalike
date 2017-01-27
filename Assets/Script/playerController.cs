@@ -63,6 +63,10 @@ public class playerController : MonoBehaviour {
                 vel.x += s;
         }
 
+        anim.SetBool("isMoving", false);
+        if (vel.sqrMagnitude > 0)
+            anim.SetBool("isMoving", true);
+
         if (!isShielding)
         {
             if (vel.x > 0)
@@ -104,12 +108,14 @@ public class playerController : MonoBehaviour {
 
     public void ShieldUp()
     {
-
+        isShielding = true;
+        anim.SetBool("isShielding", true);
     }
 
     public void ShieldDown()
     {
-
+        isShielding = false;
+        anim.SetBool("isShielding", false);
     }
 
 }
