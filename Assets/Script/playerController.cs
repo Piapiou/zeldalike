@@ -3,34 +3,39 @@ using System.Collections;
 using UnityEngine.UI;
 
 public class playerController : MonoBehaviour {
-    
-    public float speed = 1.0f;
-    public Rigidbody2D rb;
-    public Camera cam;
-    public Animator anim;
 
-    public GameObject UIHeartPrefab;
-    public GameObject UILife;
-    private GameObject[] UIHeart;
-    private int numHeartDisplayed = 0;
-    private Vector2 hearthSize;
+    public GameController gameController;
 
     public int maxHealth = 16;
     public int health = 16;
+    public int swordDamage;
 
     public int direction; // N = 0 ; O = 1 ; S = 2 ; E = 3 //
 
+    public float speed = 1.0f;
+    public float speedWithShield = 0.5f;
+    public Rigidbody2D rb;
+    public Camera cam;
+    public Animator anim;
+    public AnimationClip swordAnimation;
+
+    public PolygonCollider2D[] swordHitBox;
+    private bool isAttacking;
+    private bool isShielding;
+    
+
     // Use this for initialization
     void Start () {
-        UIHeart = new GameObject[20];
-        hearthSize = new Vector2(16, -14);
+        for (int i =0; i < 4; i++)
+            swordHitBox[i].enabled = false;
+        isAttacking = false;
+        isShielding = false;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-
-        UpdateMove();
-        DisplayHealth();
+        if (!gameController.inventoryIsActive)
+            UpdateMove();
     }
 
     void UpdateMove()
@@ -40,56 +45,71 @@ public class playerController : MonoBehaviour {
         vel.x = 0;
         vel.y = 0;
 
-        if (Input.GetKey(KeyCode.DownArrow))
-            vel.y -= speed;
-        if (Input.GetKey(KeyCode.UpArrow))
-            vel.y += speed;
-        if (Input.GetKey(KeyCode.LeftArrow))
-            vel.x -= speed;
-        if (Input.GetKey(KeyCode.RightArrow))
-            vel.x += speed;
+        float s;
+        if (isShielding)
+            s = speedWithShield;
+        else
+            s = speed;
 
-        if (vel.x > 0)
+        if (!isAttacking)
         {
-            direction = 1;
+            if (Input.GetKey(KeyCode.DownArrow))
+                vel.y -= s;
+            if (Input.GetKey(KeyCode.UpArrow))
+                vel.y += s;
+            if (Input.GetKey(KeyCode.LeftArrow))
+                vel.x -= s;
+            if (Input.GetKey(KeyCode.RightArrow))
+                vel.x += s;
         }
-        else if (vel.x < 0)
+
+        if (!isShielding)
         {
-            direction = 3;
+            if (vel.x > 0)
+            {
+                direction = 1;
+            }
+            else if (vel.x < 0)
+            {
+                direction = 3;
+            }
+            else if (vel.y > 0)
+            {
+                direction = 0;
+            }
+            else if (vel.y < 0)
+            {
+                direction = 2;
+            }
+            anim.SetInteger("Direction", direction);
         }
-        else if (vel.y > 0)
-        {
-            direction = 0;
-        }
-        else if (vel.y < 0)
-        {
-            direction = 2;
-        }
-        anim.SetInteger("Direction", direction);
         rb.velocity = vel;
     }
 
-    void DisplayHealth()
+    public void Attack()
     {
-        while (numHeartDisplayed < maxHealth/4)
-        {
-            GameObject heart = Instantiate(UIHeartPrefab);
-            heart.transform.SetParent(UILife.transform);
-            Vector2 posHeart = new Vector2((hearthSize.x * (numHeartDisplayed % 10)), (hearthSize.y * (numHeartDisplayed / 10)));
-            heart.transform.localPosition = posHeart;
-            heart.transform.localScale = new Vector2(1, 1);
-            UIHeart[numHeartDisplayed++] = heart;
-        }
-
-        while (numHeartDisplayed > maxHealth / 4)
-        {
-            Destroy(UIHeart[numHeartDisplayed--]);
-        }
-
-        for (int i = 0; i < numHeartDisplayed; i++)
-        {
-            Transform fullHeart = UIHeart[i].transform.FindChild("fullHeart");
-            fullHeart.GetComponent<Image>().fillAmount = (((float)health / 4.0f)) - (float)i;
-        }
+        isAttacking = true;
+        anim.SetBool("isAttacking", true);
+        swordHitBox[direction].enabled = true;
+        StartCoroutine(StopAttack(swordAnimation.length));
     }
+
+    IEnumerator StopAttack(float time)
+    {
+        yield return new WaitForSeconds(time);
+        isAttacking = false;
+        swordHitBox[direction].enabled = false;
+        anim.SetBool("isAttacking", false);
+    }
+
+    public void ShieldUp()
+    {
+
+    }
+
+    public void ShieldDown()
+    {
+
+    }
+
 }
