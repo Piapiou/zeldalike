@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
-using Assets.Script;
+using Assets.Script.Item;
 using UnityEngine.UI;
 
 public class GameController : MonoBehaviour {
