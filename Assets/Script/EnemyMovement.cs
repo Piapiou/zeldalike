@@ -56,4 +56,12 @@ public class EnemyMovement : MonoBehaviour {
 		MovingBehaviour ();
 	}
 
+	public bool isMoving(){
+		return moving;
+	}
+
+	public int getDir(){
+		return dir;
+	}
+
 }
