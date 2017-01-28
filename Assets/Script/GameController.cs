@@ -10,6 +10,8 @@ public class GameController : MonoBehaviour {
     public GameObject[] itemsInventory;
 
     public GameObject arrowPrefab;
+    public GameObject bombPrefab;
+
 
     public GameObject player;
 
@@ -94,6 +96,8 @@ public class GameController : MonoBehaviour {
 
         // Initialisation item Bomb.
         Bomb bomb = new Bomb();
+        bomb.player = player;
+        bomb.bombPrefab = bombPrefab;
         itemList[3] = bomb;
 
     }
