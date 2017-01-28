@@ -90,6 +90,34 @@ NavMeshSettings:
     cellSize: 0.16666667
     manualCellSize: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &913633378
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 913633379}
+  m_Layer: 0
+  m_Name: Projectile
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &913633379
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 913633378}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
 --- !u!1001 &1083016442
 Prefab:
   m_ObjectHideFlags: 0
@@ -219,7 +247,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!1001 &2136670480
+--- !u!1001 &2044154717
 Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -228,11 +256,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4000011177184552, guid: 5bd6c3a8c741caf4283e8e0b86dbd890, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 0.537485
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4000011177184552, guid: 5bd6c3a8c741caf4283e8e0b86dbd890, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 2.5336204
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4000011177184552, guid: 5bd6c3a8c741caf4283e8e0b86dbd890, type: 2}
       propertyPath: m_LocalPosition.z
