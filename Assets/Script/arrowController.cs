@@ -52,18 +52,9 @@ public class arrowController : MonoBehaviour {
 
         rb.velocity = vel;
 
-
-        Debug.Log((player.transform.position - this.transform.position).sqrMagnitude);
-
     }
 
     void OnCollisionEnter2D(Collision2D coll)
-    {
-
-        Destroy(gameObject);
-    }
-    
-    void OnTriggerEnter2D(Collider2D coll)
     {
 
         Destroy(gameObject);

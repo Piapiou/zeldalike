@@ -40,7 +40,7 @@ GameObject:
   - 61: {fileID: 61000012251571176}
   m_Layer: 0
   m_Name: ButtonOnce
-  m_TagString: Untagged
+  m_TagString: DontBlock
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

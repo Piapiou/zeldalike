@@ -42,7 +42,7 @@ GameObject:
   - 61: {fileID: 61000011869861658}
   m_Layer: 21
   m_Name: arrow
-  m_TagString: Untagged
+  m_TagString: FriendProjectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -182,7 +182,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 10
   m_Sprite: {fileID: 21300000, guid: 265f62422fa08fd4b8a3dd8cc1e0707f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

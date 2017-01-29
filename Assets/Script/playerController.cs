@@ -88,6 +88,7 @@ public class playerController : MonoBehaviour {
             anim.SetInteger("Direction", direction);
         }
         rb.velocity = vel;
+        Debug.Log(rb.velocity.x + " , " + rb.velocity.y);
     }
 
     public void Attack()
