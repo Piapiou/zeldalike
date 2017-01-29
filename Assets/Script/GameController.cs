@@ -40,6 +40,9 @@ public class GameController : MonoBehaviour {
     private int numHeartDisplayed = 0;
     private Vector2 hearthSize;
 
+    public Vector2 roomSize;
+    public GameObject playZone;
+
     // Use this for initialization
     void Start () {
         inventoryCanvas.SetActive(false);
@@ -251,5 +254,34 @@ public class GameController : MonoBehaviour {
             Transform fullHeart = UIHeart[i].transform.FindChild("fullHeart");
             fullHeart.GetComponent<Image>().fillAmount = (((float)pc.health / 4.0f)) - (float)i;
         }
+    }
+
+    public void moveRoom(int direction)
+    {
+        Vector3 playZoneMovement = new Vector2(0, 0);
+        Vector3 playerMovement = new Vector2(0, 0);
+        switch (direction)
+        {
+            case 0:
+                playZoneMovement = new Vector2(0, roomSize.y);
+                playerMovement = new Vector2(0, 1);
+                break;
+            case 1:
+                playZoneMovement = new Vector2(roomSize.x, 0);
+                playerMovement = new Vector2(1, 0);
+                break;
+            case 2:
+                playZoneMovement = new Vector2(0, -roomSize.y);
+                playerMovement = new Vector2(0, -1);
+                break;
+            case 3:
+                playZoneMovement = new Vector2(-roomSize.x, 0);
+                playerMovement = new Vector2(-1, 0);
+                break;
+            default:
+                break;
+        }
+        playZone.transform.position += playZoneMovement;
+        player.transform.position += playerMovement;
     }
 }

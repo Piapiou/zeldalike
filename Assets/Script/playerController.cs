@@ -118,4 +118,25 @@ public class playerController : MonoBehaviour {
         anim.SetBool("isShielding", false);
     }
 
+    void OnCollisionEnter2D(Collision2D coll)
+    {
+        switch (coll.collider.name)
+        {
+            case "UpLimit":
+                gameController.GetComponent<GameController>().moveRoom(0);
+                break;
+            case "RightLimit":
+                gameController.GetComponent<GameController>().moveRoom(1);
+                break;
+            case "DownLimit":
+                gameController.GetComponent<GameController>().moveRoom(2);
+                break;
+            case "LeftLimit":
+                gameController.GetComponent<GameController>().moveRoom(3);
+                break;
+            default:
+                break;
+        }
+    }
+
 }
