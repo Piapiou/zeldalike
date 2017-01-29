@@ -7,7 +7,8 @@ public class EnemyAttack : MonoBehaviour {
 	bool moving;
 	int dir;
 	public EnemyMovement movement;
-	public GameObject projectile;
+	public GameObject projectilePrefab;
+	private GameObject projectile;
 
 	// Use this for initialization
 	void Start () {
@@ -24,12 +25,14 @@ public class EnemyAttack : MonoBehaviour {
 		if (coll.gameObject.tag == "Player") {
 			if(!playerInRange){
 				playerInRange = true;
+				attack ();
 			}
 		}
 	}
 
 	void attack(){
-		
+		projectile = GameObject.Instantiate (projectilePrefab);
+		projectile.GetComponent<ProjectileMovement> ().setDir (dir);
 	}
 
 }
