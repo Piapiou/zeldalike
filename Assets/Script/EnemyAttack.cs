@@ -17,6 +17,8 @@ public class EnemyAttack : MonoBehaviour {
 	public GameObject leftZone;
 	public GameObject rightZone;
 
+	public Animator anim;
+
 	// Use this for initialization
 	void Start () {
 
@@ -29,21 +31,20 @@ public class EnemyAttack : MonoBehaviour {
 		setColliders ();
 	}
 
-	void OnTriggerEnter2D (Collider2D coll) {
+	void OnTriggerStay2D (Collider2D coll) {
 		if (coll.gameObject.tag == "Player") {
 		//if (true) {
 			movement.StayStill();
-			print ("attaque");
 			attack ();
 		}
 	}
 
 	void attack(){
-		if (!attacked) {
+		if (projectile == null) {
+			anim.SetBool("shooting", true);
 			projectile = GameObject.Instantiate (projectilePrefab);
 			projectile.GetComponent<ProjectileMovement> ().setDir (dir);
 			projectile.transform.position = setProjectilePosition ();
-			attacked = true;
 		}
 	}
 

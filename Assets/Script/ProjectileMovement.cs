@@ -31,4 +31,8 @@ public class ProjectileMovement : MonoBehaviour {
 	public void setDir(int _dir){
 		dir = _dir;
 	}
+
+	void OnCollisionEnter2D(Collision2D coll){
+		Destroy (this.gameObject);
+	}
 }

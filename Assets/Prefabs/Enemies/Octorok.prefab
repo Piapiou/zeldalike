@@ -360,6 +360,7 @@ MonoBehaviour:
   upZone: {fileID: 1000011979619942}
   leftZone: {fileID: 1000012575323664}
   rightZone: {fileID: 1000010728680074}
+  anim: {fileID: 95000011953941554}
 --- !u!114 &114000013035226640
 MonoBehaviour:
   m_ObjectHideFlags: 1

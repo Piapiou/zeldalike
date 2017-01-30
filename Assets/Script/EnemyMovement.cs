@@ -20,6 +20,7 @@ public class EnemyMovement : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		
 	}
 		
 	void ChooseRandomDirection() {
@@ -39,7 +40,7 @@ public class EnemyMovement : MonoBehaviour {
 
 	public void StayStill(){
 		anim.SetInteger("dir", dir);
-		anim.SetBool("moving", moving);
+		anim.SetBool("moving", false);
 		rb.velocity = new Vector2 (0, 0);
 	}
 
@@ -54,6 +55,7 @@ public class EnemyMovement : MonoBehaviour {
 
 	void MovingLoop(){
 		moving = !moving;
+		anim.SetBool("shooting", false);
 		anim.SetBool("moving", moving);
 		MovingBehaviour ();
 	}
