@@ -3,14 +3,19 @@ using System.Collections;
 
 public class EnemyAttack : MonoBehaviour {
 
-	private bool playerInRange = false;
 	private bool attacked = false;
 	private bool moving;
 	private int dir;
+
 	public EnemyMovement movement;
 	public GameObject projectilePrefab;
 	public Transform position;
 	private GameObject projectile;
+
+	public GameObject downZone;
+	public GameObject upZone;
+	public GameObject leftZone;
+	public GameObject rightZone;
 
 	// Use this for initialization
 	void Start () {
@@ -19,8 +24,9 @@ public class EnemyAttack : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		moving = movement.isMoving ();
 		dir = movement.getDir ();
+		moving = movement.isMoving ();
+		setColliders ();
 	}
 
 	void OnTriggerEnter2D (Collider2D coll) {
@@ -36,8 +42,52 @@ public class EnemyAttack : MonoBehaviour {
 		if (!attacked) {
 			projectile = GameObject.Instantiate (projectilePrefab);
 			projectile.GetComponent<ProjectileMovement> ().setDir (dir);
-			projectile.transform.position = position.position;
+			projectile.transform.position = setProjectilePosition ();
 			attacked = true;
+		}
+	}
+
+	Vector3 setProjectilePosition(){
+		Vector3 projectilePosition = position.position;
+		switch (dir) {
+		case 0 : projectilePosition += new Vector3 (0, 1f, 0); break;
+		case 1 : projectilePosition += new Vector3 (1f, 0, 0); break;
+		case 2 : projectilePosition += new Vector3 (0, -1f, 0); break;
+		case 3 : projectilePosition += new Vector3 (-1f, 0, 0); break;
+		}
+		return projectilePosition;
+	}
+
+	void setColliders(){
+		BoxCollider2D downCollider = downZone.GetComponent<BoxCollider2D> ();
+		BoxCollider2D upCollider = upZone.GetComponent<BoxCollider2D> ();
+		BoxCollider2D rightCollider = rightZone.GetComponent<BoxCollider2D> ();
+		BoxCollider2D leftCollider = leftZone.GetComponent<BoxCollider2D> ();
+		switch(dir){
+		case 0:
+			downCollider.enabled = false;
+			upCollider.enabled = true;
+			rightCollider.enabled = false;
+			leftCollider.enabled = false;
+			break;
+		case 1:
+			downCollider.enabled = false;
+			upCollider.enabled = false;
+			rightCollider.enabled = true;
+			leftCollider.enabled = false;
+			break;
+		case 2:
+			downCollider.enabled = true;
+			upCollider.enabled = false;
+			rightCollider.enabled = false;
+			leftCollider.enabled = false;
+			break;
+		case 3:
+			downCollider.enabled = false;
+			upCollider.enabled = false;
+			rightCollider.enabled = false;
+			leftCollider.enabled = true;
+			break;
 		}
 	}
 

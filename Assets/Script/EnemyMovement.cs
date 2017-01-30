@@ -28,7 +28,7 @@ public class EnemyMovement : MonoBehaviour {
 		anim.SetInteger("dir", dir);
 	}
 
-	void MoveInDirection(int _dir) {
+	public void MoveInDirection(int _dir) {
 		switch (_dir) {
 			case 0 : rb.velocity += new Vector2 (0, speed); break;
 			case 1 : rb.velocity += new Vector2 (speed, 0); break;
@@ -37,7 +37,9 @@ public class EnemyMovement : MonoBehaviour {
 		}
 	}
 
-	void StayStill(){
+	public void StayStill(){
+		anim.SetInteger("dir", dir);
+		anim.SetBool("moving", moving);
 		rb.velocity = new Vector2 (0, 0);
 	}
 
