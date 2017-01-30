@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
-using Assets.Script;
+using Assets.Script.Item;
 using UnityEngine.UI;
 
 public class GameController : MonoBehaviour {
@@ -10,23 +10,38 @@ public class GameController : MonoBehaviour {
     public GameObject[] itemsInventory;
 
     public GameObject arrowPrefab;
+    public GameObject bombPrefab;
+
 
     public GameObject player;
 
     public bool[] unlockedItem;
+
+    public GameObject UIItem1;
+    public GameObject UIItem2;
+    public Sprite blankSprite;
 
     private Item[] itemList;
 
     private int activeObject1 = -1;
     private int activeObject2 = -1;
 
-    private bool inventoryIsActive = false;
+    public bool inventoryIsActive = false;
     private int selectedItem = 0;
     private int itemPerRow = 4;
     private int numItem = 12;
 
     private Vector2 originSelection;
     private Vector2 moveSelection;
+    
+    public GameObject UIHeartPrefab;
+    public GameObject UILife;
+    private GameObject[] UIHeart;
+    private int numHeartDisplayed = 0;
+    private Vector2 hearthSize;
+
+    public Vector2 roomSize;
+    public GameObject playZone;
 
     // Use this for initialization
     void Start () {
@@ -34,39 +49,67 @@ public class GameController : MonoBehaviour {
         originSelection = selectionCursor.transform.localPosition;
         moveSelection = new Vector2(72, -49);
         InitItem();
+
+        UIHeart = new GameObject[20];
+        hearthSize = new Vector2(16, -14);
     }
 	
 	// Update is called once per frame
 	void Update () {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            inventoryIsActive = !inventoryIsActive;
-            inventoryCanvas.SetActive(inventoryIsActive);
-        }
-
-        if (inventoryIsActive)
+        if (player.GetComponent<playerController>().isDead())
         {
             Time.timeScale = 0.0f;
-            SelectionMovement();
-            DisplayItems();
-            SelectItem();
+            UpdateUI();
         } else
         {
-            Time.timeScale = 1.0f;
-            CheckActiveItem();
-        }
 
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                inventoryIsActive = !inventoryIsActive;
+                inventoryCanvas.SetActive(inventoryIsActive);
+            }
+
+            if (inventoryIsActive)
+            {
+                Time.timeScale = 0.0f;
+                SelectionMovement();
+                DisplayItems();
+                SelectItem();
+            } else
+            {
+                Time.timeScale = 1.0f;
+                CheckActiveItem();
+            }
+            UpdateUI();
+
+        }
     }
     
     void InitItem()
     {
         itemList = new Item[numItem];
 
-        // Initialisation item Arc.
-        Arc arc = new Arc();
-        arc.arrowPrefab = arrowPrefab;
-        arc.player = player;
-        itemList[0] = arc;
+        // Initialisation item Bow.
+        Bow bow = new Bow();
+        bow.arrowPrefab = arrowPrefab;
+        bow.player = player;
+        itemList[0] = bow;
+        
+        // Initialisation item Shield.
+        Shield shield = new Shield();
+        shield.player = player;
+        itemList[1] = shield;
+
+        // Initialisation item Sword.
+        Sword sword = new Sword();
+        sword.player = player;
+        itemList[2] = sword;
+
+        // Initialisation item Bomb.
+        Bomb bomb = new Bomb();
+        bomb.player = player;
+        bomb.bombPrefab = bombPrefab;
+        itemList[3] = bomb;
 
     }
 
@@ -89,7 +132,6 @@ public class GameController : MonoBehaviour {
             selectedItem += 1;
         }
         selectedItem = (selectedItem + numItem) % numItem;
-
 
         Vector2 posSel = originSelection;
         posSel.x += (selectedItem % itemPerRow) * (moveSelection.x);
@@ -125,6 +167,8 @@ public class GameController : MonoBehaviour {
             }
         }
     }
+    
+   
 
     void SelectItem()
     {
@@ -179,5 +223,73 @@ public class GameController : MonoBehaviour {
 
         if (Input.GetKeyUp(KeyCode.X) && activeObject2 != -1)
             itemList[activeObject2].ButtonPressedUp();
+    }
+
+    void UpdateUI()
+    {
+        // Item
+        if (activeObject1 != -1)
+            UIItem1.GetComponent<Image>().sprite = itemsInventory[activeObject1].transform.FindChild("Sprite").GetComponent<Image>().sprite;
+        else
+            UIItem1.GetComponent<Image>().sprite = blankSprite;
+
+        if (activeObject2 != -1)
+            UIItem2.GetComponent<Image>().sprite = itemsInventory[activeObject2].transform.FindChild("Sprite").GetComponent<Image>().sprite;
+        else
+            UIItem2.GetComponent<Image>().sprite = blankSprite;
+        
+        playerController pc = player.GetComponent<playerController>();
+
+
+        // Health
+        while (numHeartDisplayed < pc.maxHealth / 4)
+        {
+            GameObject heart = Instantiate(UIHeartPrefab);
+            heart.transform.SetParent(UILife.transform);
+            Vector2 posHeart = new Vector2((hearthSize.x * (numHeartDisplayed % 10)), (hearthSize.y * (numHeartDisplayed / 10)));
+            heart.transform.localPosition = posHeart;
+            heart.transform.localScale = new Vector2(1, 1);
+            UIHeart[numHeartDisplayed++] = heart;
+        }
+
+        while (numHeartDisplayed > pc.maxHealth / 4)
+        {
+            Destroy(UIHeart[numHeartDisplayed--]);
+        }
+
+        for (int i = 0; i < numHeartDisplayed; i++)
+        {
+            Transform fullHeart = UIHeart[i].transform.FindChild("fullHeart");
+            fullHeart.GetComponent<Image>().fillAmount = (((float)pc.health / 4.0f)) - (float)i;
+        }
+    }
+
+    public void moveRoom(int direction)
+    {
+        Vector3 playZoneMovement = new Vector2(0, 0);
+        Vector3 playerMovement = new Vector2(0, 0);
+        switch (direction)
+        {
+            case 0:
+                playZoneMovement = new Vector2(0, roomSize.y);
+                playerMovement = new Vector2(0, 1);
+                break;
+            case 1:
+                playZoneMovement = new Vector2(roomSize.x, 0);
+                playerMovement = new Vector2(1, 0);
+                break;
+            case 2:
+                playZoneMovement = new Vector2(0, -roomSize.y);
+                playerMovement = new Vector2(0, -1);
+                break;
+            case 3:
+                playZoneMovement = new Vector2(-roomSize.x, 0);
+                playerMovement = new Vector2(-1, 0);
+                break;
+            default:
+                break;
+        }
+        playZone.transform.position += playZoneMovement;
+        player.transform.position += playerMovement;
     }
 }

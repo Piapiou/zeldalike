@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 4000010983297878}
   - 212: {fileID: 212000010646329536}
-  m_Layer: 21
+  m_Layer: 20
   m_Name: Art
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40,9 +40,9 @@ GameObject:
   - 95: {fileID: 95000011577008456}
   - 61: {fileID: 61000012819974870}
   - 61: {fileID: 61000011869861658}
-  m_Layer: 21
+  m_Layer: 20
   m_Name: arrow
-  m_TagString: Untagged
+  m_TagString: FriendProjectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -54,8 +54,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000012070412264}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.018, y: 0, z: 0}
-  m_LocalScale: {x: 3.6463976, y: 3.6463976, z: 3.6463976}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 4000013315232564}
@@ -67,7 +67,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000012457913912}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.6832, y: -0.03213179, z: 0}
+  m_LocalPosition: {x: -3.2379112, y: -0.48024607, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
@@ -97,28 +97,28 @@ BoxCollider2D:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000012457913912}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Size: {x: 0.7502844, y: 0.1616703}
+  m_Size: {x: 0.88, y: 0.18}
 --- !u!61 &61000012819974870
 BoxCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000012457913912}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Size: {x: 0.16167028, y: 0.75028443}
+  m_Size: {x: 0.18, y: 0.88}
 --- !u!95 &95000011577008456
 Animator:
   serializedVersion: 3
@@ -154,6 +154,8 @@ MonoBehaviour:
   player: {fileID: 0}
   verticalCollider: {fileID: 61000012819974870}
   horizontalCollider: {fileID: 61000011869861658}
+  knockBack: 100
+  damage: 2
 --- !u!212 &212000010646329536
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -182,7 +184,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 10
   m_Sprite: {fileID: 21300000, guid: 265f62422fa08fd4b8a3dd8cc1e0707f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

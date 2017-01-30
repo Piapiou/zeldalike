@@ -3,23 +3,28 @@ using System.Collections;
 
 public class arrowController : MonoBehaviour {
 
-    public int direction = 0;
+    public int direction = 0;// N = 0 ; O = 1 ; S = 2 ; E = 3 //
     public float speed;
     public Rigidbody2D rb;
     public Animator anim;
     public GameObject player;
     public BoxCollider2D verticalCollider;
     public BoxCollider2D horizontalCollider;
+    public float knockBack = 1.0f;
+    public int damage = 2;
 
     // Use this for initialization
     void Start () {
+        Time.timeScale = 0.1f;
         anim.SetInteger("direction", direction);
-        if (direction > 1)
+        if (direction%2 == 1)
         {
+            horizontalCollider.enabled = true;
             verticalCollider.enabled = false;
         } else
         {
             horizontalCollider.enabled = false;
+            verticalCollider.enabled = true;
         }
     }
 	
@@ -38,13 +43,13 @@ public class arrowController : MonoBehaviour {
                 vel.y = speed;
                 break;
             case 1:
-                vel.y = -speed;
+                vel.x = speed;
                 break;
             case 2:
-                vel.x = -speed;
+                vel.y = -speed;
                 break;
             case 3:
-                vel.x = speed;
+                vel.x = -speed;
                 break;
             default:
                 break;
@@ -52,22 +57,24 @@ public class arrowController : MonoBehaviour {
 
         rb.velocity = vel;
 
-
-        Debug.Log((player.transform.position - this.transform.position).sqrMagnitude);
-        if ((player.transform.position - this.transform.position).sqrMagnitude > 30)
-            Destroy(gameObject);
-
     }
 
     void OnCollisionEnter2D(Collision2D coll)
     {
-
+        if (coll.collider.tag == "Player")
+        {
+            coll.gameObject.GetComponent<playerController>().addKnockBack(-coll.contacts[0].normal*knockBack);
+            coll.gameObject.GetComponent<playerController>().getDamage(damage);
+        }
+        
         Destroy(gameObject);
     }
     
     void OnTriggerEnter2D(Collider2D coll)
     {
-
-        Destroy(gameObject);
+        if (coll.tag == "Shield")
+        {
+            Destroy(gameObject);
+        }
     }
 }

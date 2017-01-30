@@ -3,7 +3,14 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Ennemy
+  - Explosion
+  - SwordPlayer
+  - FriendProjectile
+  - DontBlock
+  - EnnemyProjectile
+  - Shield
   layers:
   - Default
   - TransparentFX
@@ -23,16 +30,16 @@ TagManager:
   - Decors
   - 
   - 
-  - 
-  - 
+  - Explosion
   - 
   - FriendProjectile
+  - EnnemyProjectile
   - 
-  - 
+  - Ennemy
   - 
   - 
   - Player
-  - 
+  - SwordPlayer
   - 
   - 
   - 
