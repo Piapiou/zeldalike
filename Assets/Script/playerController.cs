@@ -22,6 +22,8 @@ public class playerController : MonoBehaviour {
     public PolygonCollider2D[] swordHitBox;
     private bool isAttacking;
     private bool isShielding;
+
+    private Vector2 knockBack;
     
 
     // Use this for initialization
@@ -30,17 +32,18 @@ public class playerController : MonoBehaviour {
             swordHitBox[i].enabled = false;
         isAttacking = false;
         isShielding = false;
+        knockBack = new Vector2(0, 0);
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        if (!gameController.inventoryIsActive)
+        if (!gameController.inventoryIsActive && !isDead())
             UpdateMove();
     }
 
     void UpdateMove()
     {
-        var vel = rb.velocity;
+        Vector2 vel = rb.velocity;
 
         vel.x = 0;
         vel.y = 0;
@@ -87,8 +90,9 @@ public class playerController : MonoBehaviour {
             }
             anim.SetInteger("Direction", direction);
         }
+        vel += knockBack;
         rb.velocity = vel;
-        Debug.Log(rb.velocity.x + " , " + rb.velocity.y);
+        knockBack = new Vector2(0, 0);
     }
 
     public void Attack()
@@ -140,4 +144,20 @@ public class playerController : MonoBehaviour {
         }
     }
 
+    public void addKnockBack(Vector2 knock)
+    {
+        knockBack += knock;
+    }
+
+    public void getDamage(int damage)
+    {
+        health -= damage;
+        
+        
+    }
+    
+    public bool isDead()
+    {
+        return (health <= 0);
+    }
 }

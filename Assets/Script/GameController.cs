@@ -56,25 +56,33 @@ public class GameController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            inventoryIsActive = !inventoryIsActive;
-            inventoryCanvas.SetActive(inventoryIsActive);
-        }
-
-        if (inventoryIsActive)
+        if (player.GetComponent<playerController>().isDead())
         {
             Time.timeScale = 0.0f;
-            SelectionMovement();
-            DisplayItems();
-            SelectItem();
+            UpdateUI();
         } else
         {
-            Time.timeScale = 1.0f;
-            CheckActiveItem();
-        }
-        UpdateUI();
 
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                inventoryIsActive = !inventoryIsActive;
+                inventoryCanvas.SetActive(inventoryIsActive);
+            }
+
+            if (inventoryIsActive)
+            {
+                Time.timeScale = 0.0f;
+                SelectionMovement();
+                DisplayItems();
+                SelectItem();
+            } else
+            {
+                Time.timeScale = 1.0f;
+                CheckActiveItem();
+            }
+            UpdateUI();
+
+        }
     }
     
     void InitItem()

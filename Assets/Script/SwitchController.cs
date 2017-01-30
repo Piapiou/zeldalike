@@ -9,7 +9,6 @@ public class SwitchController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-
         anim.SetBool("isOn", isOn);
     }
 	
@@ -21,20 +20,35 @@ public class SwitchController : MonoBehaviour {
     void OnCollisionEnter2D(Collision2D coll)
     {
         Debug.Log(coll.collider.tag);
-        if (coll.collider.tag == "Explosion" || coll.collider.tag == "SwordPlayer" || coll.collider.tag == "FriendProjectile")
+        if (coll.collider.tag == "Explosion" || coll.collider.tag == "FriendProjectile")
         {
-            if (isOn == true && canSwitchBackOff == true)
-            {
-                isOn = false;
-                anim.SetBool("isOn", false);
-            }
-            else if (isOn == false)
-            {
-                isOn = true;
-                anim.SetBool("isOn", true);
-            }
-
+            Trigger();
         }
             
+    }
+
+    void OnTriggerEnter2D(Collider2D coll)
+    {
+        Debug.Log(coll.tag);
+        if (coll.tag == "SwordPlayer")
+        {
+            Trigger();
+
+        }
+
+    }
+
+    void Trigger()
+    {
+        if (isOn == true && canSwitchBackOff == true)
+        {
+            isOn = false;
+            anim.SetBool("isOn", false);
+        }
+        else if (isOn == false)
+        {
+            isOn = true;
+            anim.SetBool("isOn", true);
+        }
     }
 }

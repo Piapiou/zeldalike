@@ -19,7 +19,7 @@ namespace Assets.Script.Item
                 arrow = GameObject.Instantiate(arrowPrefab);
                 arrow.GetComponent<arrowController>().direction = player.GetComponent<playerController>().direction;
                 arrow.GetComponent<arrowController>().player = player;
-                arrow.transform.position = player.transform.position;
+                arrow.transform.position = new Vector2(player.transform.position.x, player.transform.position.y-0.2f);
             }
         }
 

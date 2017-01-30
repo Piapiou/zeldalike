@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 96c5128b50650f94faa73b1e2cd5ae27
-timeCreated: 1485269684
+guid: edcfbbe01e9413a4e9e6b460a305d6ae
+timeCreated: 1485789358
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName: {}
@@ -41,7 +41,7 @@ TextureImporter:
   spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
-  alignment: 0
+  alignment: 8
   spritePivot: {x: 0.5, y: 0.5}
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spritePixelsToUnits: 80

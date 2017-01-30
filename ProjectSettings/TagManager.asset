@@ -9,6 +9,8 @@ TagManager:
   - SwordPlayer
   - FriendProjectile
   - DontBlock
+  - EnnemyProjectile
+  - Shield
   layers:
   - Default
   - TransparentFX
@@ -30,8 +32,8 @@ TagManager:
   - 
   - Explosion
   - 
-  - 
   - FriendProjectile
+  - EnnemyProjectile
   - 
   - Ennemy
   - 

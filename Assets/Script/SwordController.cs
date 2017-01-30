@@ -17,7 +17,10 @@ public class SwordController : MonoBehaviour {
     
     void OnCollisionEnter2D(Collision2D coll)
     {
-        Destroy(coll.gameObject);
+        if (coll.collider.tag == "Ennemy")
+            Destroy(coll.gameObject);
+        else
+            Debug.Log(coll.collider.tag);
     }
 
 }
