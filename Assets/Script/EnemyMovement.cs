@@ -20,6 +20,7 @@ public class EnemyMovement : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		
 	}
 		
 	void ChooseRandomDirection() {
@@ -28,7 +29,7 @@ public class EnemyMovement : MonoBehaviour {
 		anim.SetInteger("dir", dir);
 	}
 
-	void MoveInDirection(int _dir) {
+	public void MoveInDirection(int _dir) {
 		switch (_dir) {
 			case 0 : rb.velocity += new Vector2 (0, speed); break;
 			case 1 : rb.velocity += new Vector2 (speed, 0); break;
@@ -37,7 +38,9 @@ public class EnemyMovement : MonoBehaviour {
 		}
 	}
 
-	void StayStill(){
+	public void StayStill(){
+		anim.SetInteger("dir", dir);
+		anim.SetBool("moving", false);
 		rb.velocity = new Vector2 (0, 0);
 	}
 
@@ -52,8 +55,17 @@ public class EnemyMovement : MonoBehaviour {
 
 	void MovingLoop(){
 		moving = !moving;
+		anim.SetBool("shooting", false);
 		anim.SetBool("moving", moving);
 		MovingBehaviour ();
+	}
+
+	public bool isMoving(){
+		return moving;
+	}
+
+	public int getDir(){
+		return dir;
 	}
 
 }
