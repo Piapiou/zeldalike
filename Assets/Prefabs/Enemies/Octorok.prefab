@@ -178,8 +178,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9161081f84735754c9d41cb939c75ca3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dir: 0
   movement: {fileID: 114000013035226640}
-  projectile: {fileID: 0}
+  projectilePrefab: {fileID: 1000010372575504, guid: 1b7945f396199844b8f86691ec05ee49,
+    type: 2}
+  position: {fileID: 4000011177184552}
 --- !u!114 &114000011171803272
 MonoBehaviour:
   m_ObjectHideFlags: 1

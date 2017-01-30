@@ -3,11 +3,13 @@ using System.Collections;
 
 public class EnemyAttack : MonoBehaviour {
 
-	bool playerInRange = false;
-	bool moving;
-	int dir;
+	private bool playerInRange = false;
+	private bool attacked = false;
+	private bool moving;
+	private int dir;
 	public EnemyMovement movement;
 	public GameObject projectilePrefab;
+	public Transform position;
 	private GameObject projectile;
 
 	// Use this for initialization
@@ -23,16 +25,20 @@ public class EnemyAttack : MonoBehaviour {
 
 	void OnTriggerEnter2D (Collider2D coll) {
 		if (coll.gameObject.tag == "Player") {
-			if(!playerInRange){
-				playerInRange = true;
-				attack ();
-			}
+		//if (true) {
+			movement.StayStill();
+			print ("attaque");
+			attack ();
 		}
 	}
 
 	void attack(){
-		projectile = GameObject.Instantiate (projectilePrefab);
-		projectile.GetComponent<ProjectileMovement> ().setDir (dir);
+		if (!attacked) {
+			projectile = GameObject.Instantiate (projectilePrefab);
+			projectile.GetComponent<ProjectileMovement> ().setDir (dir);
+			projectile.transform.position = position.position;
+			attacked = true;
+		}
 	}
 
 }

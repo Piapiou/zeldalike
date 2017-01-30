@@ -5,7 +5,7 @@ public class ProjectileMovement : MonoBehaviour {
 
 	public float speed = 0.0f;
 	public Rigidbody2D rb;
-	private int dir = 0;
+	private int dir = -1;
 
 	// Use this for initialization
 	void Start () {
@@ -14,7 +14,9 @@ public class ProjectileMovement : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		MoveInDirection (dir);
+		if (dir > -1) {
+			MoveInDirection (dir);
+		}
 	}
 
 	void MoveInDirection(int _dir) {
