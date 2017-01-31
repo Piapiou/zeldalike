@@ -6402,6 +6402,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e190edce872fcd8489d3bd252f117677, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  em: {fileID: 0}
   anim: {fileID: 389615630}
   animDeath: {fileID: 7400000, guid: 97a7caac1a91fe140863d855b9e8accd, type: 2}
 --- !u!114 &389615629
@@ -6412,10 +6413,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 389615623}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 811325cb15e6d874da226154429a0999, type: 3}
+  m_Script: {fileID: 11500000, guid: 2938dcb08b8ac7140b48a00ad1b9825c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: {fileID: 389615628}
+  enemySprite: {fileID: 932725528}
   lifePoints: 30
   isVulnerable: 0
 --- !u!95 &389615630
