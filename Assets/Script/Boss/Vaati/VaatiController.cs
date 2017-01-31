@@ -5,7 +5,7 @@ public class VaatiController : MonoBehaviour {
 
     public GameObject player;
     public GameObject ballPrefabs;
-    public Rigidbody2D rb;
+    public EnemyMovement move;
 
     public GameObject[] vaatiTargets;
     public int currentTargetPosition = 4;
@@ -16,7 +16,7 @@ public class VaatiController : MonoBehaviour {
     public float ballSpeed = 1.5f;
     private int numberSendBack = 0;
 
-    public EnemyController life;
+    public EnemyHealth life;
     public float vulnerableTime = 5.0f;
 
     public int contactDamage;
@@ -58,7 +58,7 @@ public class VaatiController : MonoBehaviour {
                 }
             }
         }
-        rb.velocity = vel;
+        move.setVelocity(vel);
     }
 
     public void SendBackBall()
