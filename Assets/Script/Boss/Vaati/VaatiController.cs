@@ -35,7 +35,7 @@ public class VaatiController : MonoBehaviour {
 	void Update () {
 
 
-	    if (ball == null && !life.isVulnerable)
+	    if (ball == null && !life.isVulnerable && life.lifePoints > 0)
         {
             if ((vaatiTargets[currentTargetPosition].transform.position - transform.position).sqrMagnitude > 0.05)
             {
