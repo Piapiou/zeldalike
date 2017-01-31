@@ -39,7 +39,7 @@ public class EnemyHealth : MonoBehaviour {
         }
 	}
 
-	void SufferDeath(){
+	public void SufferDeath(){
 		em.setVelocity (new Vector2(0,0));
 		Destroy (this.gameObject.GetComponent<CircleCollider2D> ());
 		anim.SetBool("dying", true);

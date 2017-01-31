@@ -11,8 +11,8 @@ public class TestFunctions : MonoBehaviour {
 	// Update is called once per frame
 	void FixedUpdate () {
 		if (Input.GetKeyUp (KeyCode.UpArrow)){
-			EnemyDeath killer = GameObject.Find ("Octorok").GetComponent<EnemyDeath>();
-			killer.kill ();
+			EnemyHealth killer = GameObject.Find ("Octorok").GetComponent<EnemyHealth>();
+			killer.SufferDeath ();
 		}
 	}
 }
