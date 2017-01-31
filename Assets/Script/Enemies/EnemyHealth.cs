@@ -9,6 +9,8 @@ public class EnemyHealth : MonoBehaviour {
 
 	public GameObject enemySprite;
 
+    public bool isVulnerable;
+
 	private bool isHurt = false;
 	public int lifePoints = 3;
 
@@ -29,9 +31,12 @@ public class EnemyHealth : MonoBehaviour {
 	}
 
 	public void SufferDamage(int hit){
-		this.lifePoints = this.lifePoints - hit;
-		isHurt = true;
-		StartCoroutine(Blink ());
+        if (isVulnerable)
+        {
+            this.lifePoints = this.lifePoints - hit;
+            isHurt = true;
+            StartCoroutine(Blink());
+        }
 	}
 
 	void SufferDeath(){
