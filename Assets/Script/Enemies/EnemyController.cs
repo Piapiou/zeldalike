@@ -19,7 +19,11 @@ public class EnemyController : MonoBehaviour {
 		}
 	}
 
-	void SufferDamage(int hit){
+	public void SufferKnockback(Vector2 knock){
+		
+	}
+
+	public void SufferDamage(int hit){
 		this.lifePoints = this.lifePoints - hit;
 	}
 

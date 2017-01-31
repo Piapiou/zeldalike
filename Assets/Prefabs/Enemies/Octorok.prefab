@@ -165,7 +165,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000012924068834}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.5265915, y: -0.47759292, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
@@ -340,6 +340,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e190edce872fcd8489d3bd252f117677, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  em: {fileID: 114000013035226640}
   anim: {fileID: 95000011953941554}
   animDeath: {fileID: 7400000, guid: 5bc8f8f899146cf4ab79350aa7affd54, type: 2}
 --- !u!114 &114000012679288128
@@ -353,6 +354,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9161081f84735754c9d41cb939c75ca3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  resting: 0
   movement: {fileID: 114000013035226640}
   projectilePrefab: {fileID: 1000010372575504, guid: 1b7945f396199844b8f86691ec05ee49,
     type: 2}
@@ -374,6 +376,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 2
+  dir: 0
+  blockedDir: -1
   rb: {fileID: 50000014251405544}
   anim: {fileID: 95000011953941554}
 --- !u!114 &114000014233632282
