@@ -24,7 +24,7 @@ GameObject:
   - 95: {fileID: 95000010822298692}
   - 61: {fileID: 61000011934849486}
   - 61: {fileID: 61000013911995682}
-  m_Layer: 21
+  m_Layer: 22
   m_Name: badArrow
   m_TagString: EnnemyProjectile
   m_Icon: {fileID: 0}
@@ -40,7 +40,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 4000010058469990}
   - 212: {fileID: 212000010678507218}
-  m_Layer: 21
+  m_Layer: 22
   m_Name: Art
   m_TagString: Untagged
   m_Icon: {fileID: 0}
