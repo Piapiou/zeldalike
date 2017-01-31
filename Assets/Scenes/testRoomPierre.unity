@@ -6375,7 +6375,7 @@ MonoBehaviour:
   player: {fileID: 795940454}
   ballPrefabs: {fileID: 1000013418431488, guid: 935d265d313ddce498b6f20b31175e5f,
     type: 2}
-  move: {fileID: 0}
+  move: {fileID: 389615628}
   vaatiTargets:
   - {fileID: 823559909}
   - {fileID: 1745526783}
@@ -6414,7 +6414,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31fd41d58b5473c4a94b15f44c805499, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  em: {fileID: 0}
+  em: {fileID: 389615628}
   anim: {fileID: 389615630}
   animDeath: {fileID: 7400000, guid: 97a7caac1a91fe140863d855b9e8accd, type: 2}
   enemySprite: {fileID: 932725528}
