@@ -33,6 +33,19 @@ public class ProjectileMovement : MonoBehaviour {
 	}
 
 	void OnCollisionEnter2D(Collision2D coll){
+		if (coll.gameObject.tag == ("Player")){
+			playerController pc = coll.gameObject.GetComponent<playerController> ();
+			pc.addKnockBack (coll.contacts[0].normal*-25);
+			pc.getDamage (1);
+		}
 		Destroy (this.gameObject);
+	}
+
+	void OnTriggerEnter2D(Collider2D coll)
+	{
+		if (coll.tag == "Shield")
+		{
+			Destroy(gameObject);
+		}
 	}
 }
