@@ -392,6 +392,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: {fileID: 114000011171803272}
+  enemySprite: {fileID: 1000011522233202}
   lifePoints: 3
 --- !u!212 &212000012689899462
 SpriteRenderer:
