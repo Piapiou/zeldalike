@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 4000012188790888}
   - 61: {fileID: 61000014036492798}
-  m_Layer: 23
+  m_Layer: 24
   m_Name: AttackZoneDown
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -35,7 +35,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000010195981700}
-  m_Layer: 23
+  m_Layer: 24
   m_Name: AttackZone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -51,7 +51,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 4000010302566792}
   - 61: {fileID: 61000011083322762}
-  m_Layer: 23
+  m_Layer: 24
   m_Name: AttackZoneRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -67,7 +67,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 4000013423916876}
   - 212: {fileID: 212000012689899462}
-  m_Layer: 23
+  m_Layer: 24
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -83,7 +83,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 4000011670136886}
   - 61: {fileID: 61000012730305200}
-  m_Layer: 23
+  m_Layer: 24
   m_Name: AttackZoneUp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -99,7 +99,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 4000011843659612}
   - 61: {fileID: 61000010049607994}
-  m_Layer: 23
+  m_Layer: 24
   m_Name: AttackZoneLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -117,12 +117,11 @@ GameObject:
   - 50: {fileID: 50000014251405544}
   - 114: {fileID: 114000013035226640}
   - 114: {fileID: 114000012081495456}
-  - 114: {fileID: 114000011171803272}
   - 58: {fileID: 58000010508775744}
   - 95: {fileID: 95000011953941554}
   - 114: {fileID: 114000012679288128}
-  - 114: {fileID: 114000014233632282}
-  m_Layer: 23
+  - 114: {fileID: 114000013159037516}
+  m_Layer: 24
   m_Name: Octorok
   m_TagString: Ennemy
   m_Icon: {fileID: 0}
@@ -330,20 +329,6 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &114000011171803272
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000012924068834}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e190edce872fcd8489d3bd252f117677, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  em: {fileID: 114000013035226640}
-  anim: {fileID: 95000011953941554}
-  animDeath: {fileID: 7400000, guid: 5bc8f8f899146cf4ab79350aa7affd54, type: 2}
 --- !u!114 &114000012081495456
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -393,7 +378,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 50000014251405544}
---- !u!114 &114000014233632282
+--- !u!114 &114000013159037516
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -401,11 +386,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1000012924068834}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 811325cb15e6d874da226154429a0999, type: 3}
+  m_Script: {fileID: 11500000, guid: 31fd41d58b5473c4a94b15f44c805499, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemy: {fileID: 114000011171803272}
+  em: {fileID: 114000013035226640}
+  anim: {fileID: 95000011953941554}
+  animDeath: {fileID: 7400000, guid: 5bc8f8f899146cf4ab79350aa7affd54, type: 2}
   enemySprite: {fileID: 1000011522233202}
+  isVulnerable: 1
   lifePoints: 3
 --- !u!212 &212000012689899462
 SpriteRenderer:
