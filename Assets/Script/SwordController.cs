@@ -14,13 +14,16 @@ public class SwordController : MonoBehaviour {
 	void Update () {
 	
 	}
-    
-    void OnCollisionEnter2D(Collision2D coll)
+
+	void OnTriggerEnter2D(Collider2D coll)
     {
-        if (coll.collider.tag == "Ennemy")
-            Destroy(coll.gameObject);
+		if (coll.tag == "Ennemy") {
+			EnemyController ec = coll.gameObject.GetComponent<EnemyController> ();
+			ec.SufferKnockback (new Vector2(0,0));
+			ec.SufferDamage (player.gameObject.GetComponent<playerController>().swordDamage);
+		}
         else
-            Debug.Log(coll.collider.tag);
+            Debug.Log(coll.tag);
     }
 
 }
