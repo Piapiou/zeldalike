@@ -66,6 +66,11 @@ public class arrowController : MonoBehaviour {
             coll.gameObject.GetComponent<playerController>().addKnockBack(-coll.contacts[0].normal*knockBack);
             coll.gameObject.GetComponent<playerController>().getDamage(damage);
         }
+		if (coll.gameObject.tag == "Ennemy" || coll.gameObject.tag == "Boss") {
+			EnemyHealth eh = coll.gameObject.GetComponent<EnemyHealth> ();
+			eh.SufferKnockback (new Vector2(0,0));
+			eh.SufferDamage (damage);
+		}
         
         Destroy(gameObject);
     }

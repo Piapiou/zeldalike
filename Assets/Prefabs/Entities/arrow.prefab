@@ -155,7 +155,7 @@ MonoBehaviour:
   verticalCollider: {fileID: 61000012819974870}
   horizontalCollider: {fileID: 61000011869861658}
   knockBack: 100
-  damage: 2
+  damage: 1
 --- !u!212 &212000010646329536
 SpriteRenderer:
   m_ObjectHideFlags: 1

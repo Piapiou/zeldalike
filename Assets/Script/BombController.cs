@@ -8,6 +8,8 @@ public class BombController : MonoBehaviour
     public CircleCollider2D hitbox;
     public AnimationClip animExplosion;
 
+	public int damage = 4;
+
     // Use this for initialization
     void Start()
     {
@@ -45,4 +47,15 @@ public class BombController : MonoBehaviour
         yield return new WaitForSeconds(time);
         hitbox.enabled = false;
     }
+
+	void OnCollisionEnter2D(Collision2D coll)
+	{
+		if (coll.gameObject.tag == "Player") {
+			coll.gameObject.GetComponent<playerController> ().getDamage (damage);
+		} else if (coll.gameObject.tag == "Ennemy" || coll.gameObject.tag == "Boss") {
+			EnemyHealth eh = coll.gameObject.GetComponent<EnemyHealth> ();
+			eh.SufferDamage (damage);
+		}
+	}
+
 }
