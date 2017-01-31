@@ -77,6 +77,7 @@ public class EnemyMovement : MonoBehaviour {
 	void OnCollisionEnter2D(Collision2D coll){
 		if (coll.gameObject.tag == ("Player")){
 			playerController pc = coll.gameObject.GetComponent<playerController> ();
+			pc.addKnockBack (coll.contacts[0].normal*-100);
 			pc.getDamage (2);
 		}
 		StayStill ();
