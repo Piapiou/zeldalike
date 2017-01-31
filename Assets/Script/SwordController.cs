@@ -17,7 +17,7 @@ public class SwordController : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D coll)
     {
-		if (coll.tag == "Ennemy") {
+		if (coll.tag == "Ennemy" || coll.tag == "Boss") {
 			EnemyHealth eh = coll.gameObject.GetComponent<EnemyHealth> ();
 			eh.SufferKnockback (new Vector2(0,0));
 			eh.SufferDamage (player.gameObject.GetComponent<playerController>().swordDamage);
