@@ -13,10 +13,16 @@ public class VaatiController : MonoBehaviour {
     public float speed = 1.0f;
 
     private GameObject ball;
+    public float ballSpeed = 1.5f;
     private int numberSendBack = 0;
+
+    public EnemyController life;
+    public float vulnerableTime = 5.0f;
 
     public int contactDamage;
     public int contactKnockback;
+
+    public Animator anim;
 
     private Vector2 vel;
 
@@ -28,9 +34,8 @@ public class VaatiController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        Debug.Log(currentTargetPosition);
-        Debug.Log((transform.position - vaatiTargets[currentTargetPosition].transform.position));
-	    if (ball == null)
+
+	    if (ball == null && !life.isVulnerable)
         {
             if ((vaatiTargets[currentTargetPosition].transform.position - transform.position).sqrMagnitude > 0.05)
             {
@@ -68,26 +73,32 @@ public class VaatiController : MonoBehaviour {
         {
             Destroy(ball);
             numberSendBack = 0;
+            
             MakeVulnerable();
         }
     }
 
     void MakeVulnerable()
     {
-
+        life.isVulnerable = true;
+        anim.SetBool("isVulnerable", true);
+        StartCoroutine(MakeImmuneback(vulnerableTime));
     }
 
     IEnumerator MakeImmuneback(float time)
     {
-
         yield return new WaitForSeconds(time);
+        life.isVulnerable = false;
+        anim.SetBool("isVulnerable", false);
     }
 
     void CreateBall()
     {
+        numberSendBack = 0;
         ball = Instantiate(ballPrefabs);
         ball.GetComponent<VaatiBallController>().player = player;
         ball.GetComponent<VaatiBallController>().Vaati = gameObject;
         ball.transform.position = transform.position;
+        ball.GetComponent<VaatiBallController>().speed = ballSpeed;
     }
 }

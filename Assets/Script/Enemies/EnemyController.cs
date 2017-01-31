@@ -9,8 +9,10 @@ public class EnemyController : MonoBehaviour {
 	private bool isHurt = false;
 	public int lifePoints = 3;
 
-	// Use this for initialization
-	void Start () {
+    public bool isVulnerable = true;
+
+    // Use this for initialization
+    void Start () {
 	
 	}
 	
@@ -26,9 +28,13 @@ public class EnemyController : MonoBehaviour {
 	}
 
 	public void SufferDamage(int hit){
-		this.lifePoints = this.lifePoints - hit;
-		isHurt = true;
-		StartCoroutine(Blink ());
+
+        if (!isVulnerable)
+        {
+            this.lifePoints = this.lifePoints - hit;
+            isHurt = true;
+            StartCoroutine(Blink());
+        }
 	}
 
 	void SufferDeath(){
