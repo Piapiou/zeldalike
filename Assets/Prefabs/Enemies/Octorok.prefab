@@ -116,6 +116,7 @@ GameObject:
   - 4: {fileID: 4000011177184552}
   - 50: {fileID: 50000014251405544}
   - 114: {fileID: 114000013035226640}
+  - 114: {fileID: 114000012081495456}
   - 114: {fileID: 114000011171803272}
   - 58: {fileID: 58000010508775744}
   - 95: {fileID: 95000011953941554}
@@ -343,6 +344,22 @@ MonoBehaviour:
   em: {fileID: 114000013035226640}
   anim: {fileID: 95000011953941554}
   animDeath: {fileID: 7400000, guid: 5bc8f8f899146cf4ab79350aa7affd54, type: 2}
+--- !u!114 &114000012081495456
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000012924068834}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a878f2b9d55c098409856ce604a8b741, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 2
+  dir: 0
+  blockedDir: -1
+  anim: {fileID: 95000011953941554}
+  move: {fileID: 114000013035226640}
 --- !u!114 &114000012679288128
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -355,7 +372,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   resting: 0
-  movement: {fileID: 114000013035226640}
+  movement: {fileID: 114000012081495456}
   projectilePrefab: {fileID: 1000010372575504, guid: 1b7945f396199844b8f86691ec05ee49,
     type: 2}
   position: {fileID: 4000011177184552}
@@ -375,11 +392,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 967ef36d68366294cb4592a5cfab99a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2
-  dir: 0
-  blockedDir: -1
   rb: {fileID: 50000014251405544}
-  anim: {fileID: 95000011953941554}
 --- !u!114 &114000014233632282
 MonoBehaviour:
   m_ObjectHideFlags: 1

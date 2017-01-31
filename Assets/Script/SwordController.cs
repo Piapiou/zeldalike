@@ -18,9 +18,9 @@ public class SwordController : MonoBehaviour {
 	void OnTriggerEnter2D(Collider2D coll)
     {
 		if (coll.tag == "Ennemy") {
-			EnemyController ec = coll.gameObject.GetComponent<EnemyController> ();
-			ec.SufferKnockback (new Vector2(0,0));
-			ec.SufferDamage (player.gameObject.GetComponent<playerController>().swordDamage);
+			EnemyHealth eh = coll.gameObject.GetComponent<EnemyHealth> ();
+			eh.SufferKnockback (new Vector2(0,0));
+			eh.SufferDamage (player.gameObject.GetComponent<playerController>().swordDamage);
 		}
         else
             Debug.Log(coll.tag);
