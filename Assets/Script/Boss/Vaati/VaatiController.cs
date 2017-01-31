@@ -63,7 +63,6 @@ public class VaatiController : MonoBehaviour {
 
     public void SendBackBall()
     {
-        Debug.Log(life.isVulnerable);
         if (numberSendBack < 3)
         {
             ball.GetComponent<VaatiBallController>().moveToPlayer = true;
@@ -76,7 +75,6 @@ public class VaatiController : MonoBehaviour {
             numberSendBack = 0;
             
             MakeVulnerable();
-            Debug.Log(life.isVulnerable);
         }
     }
 
