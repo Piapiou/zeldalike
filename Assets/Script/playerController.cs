@@ -97,17 +97,21 @@ public class playerController : MonoBehaviour {
 
     public void Attack()
     {
+
         isAttacking = true;
         anim.SetBool("isAttacking", true);
         swordHitBox[direction].enabled = true;
+        swordHitBox[direction].isTrigger = true;
         StartCoroutine(StopAttack(swordAnimation.length));
     }
 
     IEnumerator StopAttack(float time)
     {
         yield return new WaitForSeconds(time);
+        swordHitBox[direction].isTrigger = false;
         isAttacking = false;
         swordHitBox[direction].enabled = false;
+
         anim.SetBool("isAttacking", false);
     }
 

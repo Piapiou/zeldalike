@@ -17,13 +17,12 @@ public class SwordController : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D coll)
     {
-		if (coll.tag == "Ennemy" || coll.tag == "Boss") {
+        Debug.Log(coll.tag);
+        if (coll.tag == "Ennemy" || coll.tag == "Boss") {
 			EnemyHealth eh = coll.gameObject.GetComponent<EnemyHealth> ();
 			eh.SufferKnockback (new Vector2(0,0));
 			eh.SufferDamage (player.gameObject.GetComponent<playerController>().swordDamage);
 		}
-        else
-            Debug.Log(coll.tag);
     }
 
 }

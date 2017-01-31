@@ -33,7 +33,10 @@ public class VaatiController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        if (life.lifePoints <= 0)
+        {
 
+        }
 
 	    if (ball == null && !life.isVulnerable && life.lifePoints > 0)
         {
