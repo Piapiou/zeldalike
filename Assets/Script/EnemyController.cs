@@ -6,6 +6,7 @@ public class EnemyController : MonoBehaviour {
 	public EnemyDeath enemy;
 
 	public int lifePoints = 3;
+    public bool isVulnerable = true;
 
 	// Use this for initialization
 	void Start () {
@@ -20,7 +21,8 @@ public class EnemyController : MonoBehaviour {
 	}
 
 	void SufferDamage(int hit){
-		this.lifePoints = this.lifePoints - hit;
+        if (!isVulnerable)
+		    this.lifePoints = this.lifePoints - hit;
 	}
 
 	void SufferDeath(){
