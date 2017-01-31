@@ -6,6 +6,7 @@ public class EnemyAttack : MonoBehaviour {
 	private bool attacked = false;
 	private bool moving;
 	private int dir;
+	public bool resting = false;
 
 	public EnemyMovement movement;
 	public GameObject projectilePrefab;
@@ -40,21 +41,25 @@ public class EnemyAttack : MonoBehaviour {
 	}
 
 	void attack(){
-		if (projectile == null) {
-			anim.SetBool("shooting", true);
-			projectile = GameObject.Instantiate (projectilePrefab);
-			projectile.GetComponent<ProjectileMovement> ().setDir (dir);
-			projectile.transform.position = setProjectilePosition ();
+		if (!resting){
+			if (projectile == null) {
+				anim.SetBool ("shooting", true);
+				projectile = GameObject.Instantiate (projectilePrefab);
+				projectile.GetComponent<ProjectileMovement> ().setDir (dir);
+				projectile.transform.position = setProjectilePosition ();
+				resting = true;
+				StartCoroutine (Rest (0.5f));
+			}
 		}
 	}
 
 	Vector3 setProjectilePosition(){
 		Vector3 projectilePosition = position.position;
 		switch (dir) {
-		case 0 : projectilePosition += new Vector3 (0, 1f, 0); break;
-		case 1 : projectilePosition += new Vector3 (1f, 0, 0); break;
-		case 2 : projectilePosition += new Vector3 (0, -1f, 0); break;
-		case 3 : projectilePosition += new Vector3 (-1f, 0, 0); break;
+		case 0 : projectilePosition += new Vector3 (0, 0.6f, 0); break;
+		case 1 : projectilePosition += new Vector3 (0.8f, -0.4f, 0); break;
+		case 2 : projectilePosition += new Vector3 (0, -0.9f, 0); break;
+		case 3 : projectilePosition += new Vector3 (-0.8f, -0.4f, 0); break;
 		}
 		return projectilePosition;
 	}
@@ -90,6 +95,12 @@ public class EnemyAttack : MonoBehaviour {
 			leftCollider.enabled = true;
 			break;
 		}
+	}
+
+	IEnumerator Rest(float time)
+	{
+		yield return new WaitForSeconds(time);
+		resting = false;
 	}
 
 }
