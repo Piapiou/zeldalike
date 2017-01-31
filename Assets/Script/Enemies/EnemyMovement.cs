@@ -4,7 +4,8 @@ using System.Collections;
 public class EnemyMovement : MonoBehaviour {
 
 	public float speed = 0.0f;
-	private int dir = 0; // N = 0 ; O = 1 ; S = 2 ; E = 3 //
+	public int dir = 0; // N = 0 ; O = 1 ; S = 2 ; E = 3 //
+	public int blockedDir = -1;
 
 	private bool moving = false;
 
@@ -48,6 +49,10 @@ public class EnemyMovement : MonoBehaviour {
 	void MovingBehaviour(){
 		if (this.moving){
 			ChooseRandomDirection ();
+			while (this.dir == this.blockedDir) {
+				ChooseRandomDirection ();
+			}
+			blockedDir = -1;
 			MoveInDirection(this.dir);
 		} else {
 			StayStill ();
@@ -74,6 +79,8 @@ public class EnemyMovement : MonoBehaviour {
 			playerController pc = coll.gameObject.GetComponent<playerController> ();
 			pc.getDamage (2);
 		}
+		StayStill ();
+		blockedDir = dir;
 	}
 
 }
