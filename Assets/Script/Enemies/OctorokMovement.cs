@@ -16,7 +16,7 @@ public class OctorokMovement : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		InvokeRepeating ("MovingLoop", 0.0f, 1.0f);
+		InvokeRepeating ("MovingLoop", 0.0f, 0.5f+ChooseRandomTime());
 	}
 
 	// Update is called once per frame
@@ -27,6 +27,11 @@ public class OctorokMovement : MonoBehaviour {
 		int rand = (int)(Random.value * 4);
 		this.dir = rand;
 		anim.SetInteger("dir", dir);
+	}
+
+	float ChooseRandomTime() {
+		float rand = Random.value;
+		return rand;
 	}
 
 	public void MoveInDirection(int _dir) {
