@@ -6,6 +6,7 @@ public class EnemyAttack : MonoBehaviour {
 	private bool attacked = false;
 	private bool moving;
 	private int dir;
+	public bool resting = false;
 
 	public EnemyMovement movement;
 	public GameObject projectilePrefab;
@@ -40,11 +41,15 @@ public class EnemyAttack : MonoBehaviour {
 	}
 
 	void attack(){
-		if (projectile == null) {
-			anim.SetBool("shooting", true);
-			projectile = GameObject.Instantiate (projectilePrefab);
-			projectile.GetComponent<ProjectileMovement> ().setDir (dir);
-			projectile.transform.position = setProjectilePosition ();
+		if (!resting){
+			if (projectile == null) {
+				anim.SetBool ("shooting", true);
+				projectile = GameObject.Instantiate (projectilePrefab);
+				projectile.GetComponent<ProjectileMovement> ().setDir (dir);
+				projectile.transform.position = setProjectilePosition ();
+				resting = true;
+				StartCoroutine (Rest (0.5f));
+			}
 		}
 	}
 
@@ -90,6 +95,12 @@ public class EnemyAttack : MonoBehaviour {
 			leftCollider.enabled = true;
 			break;
 		}
+	}
+
+	IEnumerator Rest(float time)
+	{
+		yield return new WaitForSeconds(time);
+		resting = false;
 	}
 
 }
