@@ -18,7 +18,7 @@ public class EnemyDeath : MonoBehaviour {
 	}
 
 	public void kill(){
-		em.StayStill ();
+		em.setVelocity (new Vector2(0,0));
 		Destroy (this.gameObject.GetComponent<CircleCollider2D> ());
 		anim.SetBool("dying", true);
 		Destroy (this.gameObject, animDeath.length);

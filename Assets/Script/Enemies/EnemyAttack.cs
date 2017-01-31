@@ -8,7 +8,7 @@ public class EnemyAttack : MonoBehaviour {
 	private int dir;
 	public bool resting = false;
 
-	public EnemyMovement movement;
+	public OctorokMovement movement;
 	public GameObject projectilePrefab;
 	public Transform position;
 	private GameObject projectile;
