@@ -39,4 +39,12 @@ public class ProjectileMovement : MonoBehaviour {
 		}
 		Destroy (this.gameObject);
 	}
+
+	void OnTriggerEnter2D(Collider2D coll)
+	{
+		if (coll.tag == "Shield")
+		{
+			Destroy(gameObject);
+		}
+	}
 }

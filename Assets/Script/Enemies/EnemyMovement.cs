@@ -12,6 +12,7 @@ public class EnemyMovement : MonoBehaviour {
 
 	public Animator anim;
 
+	private Vector2 vel;
 
 	// Use this for initialization
 	void Start () {
@@ -20,7 +21,7 @@ public class EnemyMovement : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
+		rb.velocity = vel;
 	}
 		
 	void ChooseRandomDirection() {
@@ -31,17 +32,17 @@ public class EnemyMovement : MonoBehaviour {
 
 	public void MoveInDirection(int _dir) {
 		switch (_dir) {
-			case 0 : rb.velocity += new Vector2 (0, speed); break;
-			case 1 : rb.velocity += new Vector2 (speed, 0); break;
-			case 2 : rb.velocity += new Vector2 (0, -speed); break;
-			case 3 : rb.velocity += new Vector2 (-speed, 0); break;
+			case 0 : vel = new Vector2 (0, speed); break;
+			case 1 : vel = new Vector2 (speed, 0); break;
+			case 2 : vel = new Vector2 (0, -speed); break;
+			case 3 : vel = new Vector2 (-speed, 0); break;
 		}
 	}
 
 	public void StayStill(){
 		anim.SetInteger("dir", dir);
 		anim.SetBool("moving", false);
-		rb.velocity = new Vector2 (0, 0);
+		vel = new Vector2 (0, 0);
 	}
 
 	void MovingBehaviour(){
@@ -66,6 +67,13 @@ public class EnemyMovement : MonoBehaviour {
 
 	public int getDir(){
 		return dir;
+	}
+
+	void OnCollisionEnter2D(Collision2D coll){
+		if (coll.gameObject.tag == ("Player")){
+			playerController pc = coll.gameObject.GetComponent<playerController> ();
+			pc.getDamage (2);
+		}
 	}
 
 }
