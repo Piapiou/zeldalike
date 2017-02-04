@@ -7,6 +7,8 @@ public class EnemyDrop : MonoBehaviour {
 	public float dropRate = 1.0f;
 	public Transform position;
 
+	private bool isQuitting = false;
+
 	// Use this for initialization
 	void Start () {
 	
@@ -18,7 +20,9 @@ public class EnemyDrop : MonoBehaviour {
 	}
 
 	void OnDestroy(){
-		dropItem ();
+		if (!isQuitting) {
+			dropItem ();
+		}
 	}
 
 	void dropItem(){
@@ -33,8 +37,12 @@ public class EnemyDrop : MonoBehaviour {
 
 	Vector3 setItemPosition(){
 		Vector3 itemPosition = position.position;
-		itemPosition += new Vector3 (0, -0.2f, 0);
+		itemPosition += new Vector3 (0, -0.1f, 0);
 		return itemPosition;
+	}
+
+	void OnApplicationQuit(){
+		isQuitting = true;
 	}
 
 }
