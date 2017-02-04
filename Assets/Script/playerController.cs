@@ -159,7 +159,9 @@ public class playerController : MonoBehaviour {
     public void getDamage(int damage)
     {
         health -= damage;
-        
+		if (health > maxHealth){
+			health = maxHealth;
+		}
         
     }
     
