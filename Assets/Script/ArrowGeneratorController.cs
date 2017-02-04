@@ -35,7 +35,7 @@ public class ArrowGeneratorController : MonoBehaviour {
                 arrow.transform.position = new Vector2(transform.position.x- 0.5f, transform.position.y - 1.0f + 0.5f);
                 break;
             case 3:
-                arrow.transform.position = new Vector2(transform.position.x -0.5f - 1.0f, transform.position.y + 0.5f);
+                arrow.transform.position = new Vector2(transform.position.x -0.5f, transform.position.y + 0.5f);
                 break;
             default:
                 break;

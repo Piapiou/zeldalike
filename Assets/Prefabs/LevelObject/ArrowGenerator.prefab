@@ -35,8 +35,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000014170241098}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -7, y: 1, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 7, y: -1, z: 0}
+  m_LocalScale: {x: -1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
@@ -52,10 +52,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 045b537c46c0b3645a110481edafd709, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  arrowPrefabs: {fileID: 1000011324454738, guid: 480a37237e7474642af6097661343d4d,
+  arrowPrefab: {fileID: 1000011324454738, guid: 480a37237e7474642af6097661343d4d,
     type: 2}
   generationDelay: 0.5
   generationTimeOffset: 1
+  direction: 3
 --- !u!212 &212000011970156210
 SpriteRenderer:
   m_ObjectHideFlags: 1
