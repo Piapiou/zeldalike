@@ -67,17 +67,23 @@ public class GameController : MonoBehaviour {
             {
                 inventoryIsActive = !inventoryIsActive;
                 inventoryCanvas.SetActive(inventoryIsActive);
-            }
 
+                if (inventoryIsActive)
+                {
+                    Time.timeScale = 0.0f;
+                }
+                else
+                {
+                    Time.timeScale = 1.0f;
+                }
+            }
             if (inventoryIsActive)
             {
-                Time.timeScale = 0.0f;
                 SelectionMovement();
                 DisplayItems();
                 SelectItem();
             } else
             {
-                Time.timeScale = 1.0f;
                 CheckActiveItem();
             }
             UpdateUI();

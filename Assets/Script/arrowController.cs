@@ -15,7 +15,6 @@ public class arrowController : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        Time.timeScale = 0.1f;
         anim.SetInteger("direction", direction);
         if (direction%2 == 1)
         {

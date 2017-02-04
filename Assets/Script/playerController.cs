@@ -43,56 +43,59 @@ public class playerController : MonoBehaviour {
 
     void UpdateMove()
     {
-        Vector2 vel = rb.velocity;
-
-        vel.x = 0;
-        vel.y = 0;
-
-        float s;
-        if (isShielding)
-            s = speedWithShield;
-        else
-            s = speed;
-
-        if (!isAttacking)
+        if (Time.timeScale != 0.0)
         {
-            if (Input.GetKey(KeyCode.DownArrow))
-                vel.y -= s;
-            if (Input.GetKey(KeyCode.UpArrow))
-                vel.y += s;
-            if (Input.GetKey(KeyCode.LeftArrow))
-                vel.x -= s;
-            if (Input.GetKey(KeyCode.RightArrow))
-                vel.x += s;
-        }
+            Vector2 vel = rb.velocity;
 
-        anim.SetBool("isMoving", false);
-        if (vel.sqrMagnitude > 0)
-            anim.SetBool("isMoving", true);
+            vel.x = 0;
+            vel.y = 0;
 
-        if (!isShielding)
-        {
-            if (vel.x > 0)
+            float s;
+            if (isShielding)
+                s = speedWithShield;
+            else
+                s = speed;
+
+            if (!isAttacking)
             {
-                direction = 1;
+                if (Input.GetKey(KeyCode.DownArrow))
+                    vel.y -= s;
+                if (Input.GetKey(KeyCode.UpArrow))
+                    vel.y += s;
+                if (Input.GetKey(KeyCode.LeftArrow))
+                    vel.x -= s;
+                if (Input.GetKey(KeyCode.RightArrow))
+                    vel.x += s;
             }
-            else if (vel.x < 0)
+
+            anim.SetBool("isMoving", false);
+            if (vel.sqrMagnitude > 0)
+                anim.SetBool("isMoving", true);
+
+            if (!isShielding)
             {
-                direction = 3;
+                if (vel.x > 0)
+                {
+                    direction = 1;
+                }
+                else if (vel.x < 0)
+                {
+                    direction = 3;
+                }
+                else if (vel.y > 0)
+                {
+                    direction = 0;
+                }
+                else if (vel.y < 0)
+                {
+                    direction = 2;
+                }
+                anim.SetInteger("Direction", direction);
             }
-            else if (vel.y > 0)
-            {
-                direction = 0;
-            }
-            else if (vel.y < 0)
-            {
-                direction = 2;
-            }
-            anim.SetInteger("Direction", direction);
+            vel += knockBack;
+            rb.velocity = vel;
+            knockBack = new Vector2(0, 0);
         }
-        vel += knockBack;
-        rb.velocity = vel;
-        knockBack = new Vector2(0, 0);
     }
 
     public void Attack()
