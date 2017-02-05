@@ -21,8 +21,8 @@ public class AutomaticHealing : MonoBehaviour {
 		if (coll.tag == ("Player")){
 			playerController pc = coll.GetComponent<playerController> ();
 			pc.getDamage (-amount);
-		}
-		Destroy (this.gameObject);
+            Destroy(this.gameObject);
+        }
 	}
 
 }

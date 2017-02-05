@@ -163,7 +163,8 @@ public class playerController : MonoBehaviour {
 		if (health > maxHealth){
 			health = maxHealth;
 		}
-        StartCoroutine(Blink());
+        if (damage > 0)
+            StartCoroutine(Blink());
     }
     
     IEnumerator Blink()
