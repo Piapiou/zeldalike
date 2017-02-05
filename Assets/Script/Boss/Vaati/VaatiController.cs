@@ -6,6 +6,7 @@ public class VaatiController : MonoBehaviour {
     public GameObject player;
     public GameObject ballPrefabs;
     public EnemyMovement move;
+    public GameObject UIVictory;
 
     public GameObject[] vaatiTargets;
     public int currentTargetPosition = 4;
@@ -26,8 +27,8 @@ public class VaatiController : MonoBehaviour {
 
     private Vector2 vel;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
         vel = new Vector2(0, 0);
     }
 	
@@ -103,5 +104,11 @@ public class VaatiController : MonoBehaviour {
         ball.GetComponent<VaatiBallController>().Vaati = gameObject;
         ball.transform.position = transform.position;
         ball.GetComponent<VaatiBallController>().speed = ballSpeed;
+    }
+
+    void OnDestroy()
+    {
+        Time.timeScale = 0.0f;
+        UIVictory.SetActive(true);
     }
 }

@@ -2,6 +2,7 @@
 using System.Collections;
 using Assets.Script.Item;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour {
 
@@ -35,6 +36,8 @@ public class GameController : MonoBehaviour {
     private Vector2 moveSelection;
     
     public GameObject UIHeartPrefab;
+    public GameObject UIDefeat;
+    public GameObject UIVictory;
     public GameObject UILife;
     private GameObject[] UIHeart;
     private int numHeartDisplayed = 0;
@@ -60,7 +63,8 @@ public class GameController : MonoBehaviour {
         {
             Time.timeScale = 0.0f;
             UpdateUI();
-        } else
+            UIDefeat.SetActive(true);
+        } else 
         {
 
             if (Input.GetKeyDown(KeyCode.Escape))
@@ -72,7 +76,7 @@ public class GameController : MonoBehaviour {
                 {
                     Time.timeScale = 0.0f;
                 }
-                else
+                else 
                 {
                     Time.timeScale = 1.0f;
                 }
@@ -297,5 +301,16 @@ public class GameController : MonoBehaviour {
         }
         playZone.transform.position += playZoneMovement;
         player.transform.position += playerMovement;
+    }
+
+    public void GoMainMenu()
+    {
+        SceneManager.LoadScene("Scenes/mainmenu");
+    }
+
+    public void Continue()
+    {
+        Time.timeScale = 1.0f;
+        UIVictory.SetActive(false);
     }
 }
