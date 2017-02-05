@@ -25,7 +25,7 @@ public class ChestController : MonoBehaviour {
     void OnCollisionStay2D(Collision2D coll)
     {
         Debug.Log(coll.contacts[0].normal.y);
-        if (coll.collider.tag == "Player" && coll.contacts[0].normal.y > 0.7 && Input.GetKey(KeyCode.W))
+        if (!isOpen && coll.collider.tag == "Player" && coll.contacts[0].normal.y > 0.7 && Input.GetKey(KeyCode.W))
         {
             isOpen = true;
             anim.SetBool("opened", true);

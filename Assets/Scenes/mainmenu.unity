@@ -648,7 +648,7 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: 'Echap : Ouvrir Inventaire
 
-    W : Objet 1 et ouvrir Coffre
+    W : Objet 1 et Ouvrir Coffre
 
     X : Objet 2'
 --- !u!222 &1554496698
@@ -866,7 +866,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Dungeon of Rip off
+  m_Text: Dungeon of Rip-Off
 --- !u!222 &1928135997
 CanvasRenderer:
   m_ObjectHideFlags: 0
