@@ -5,6 +5,7 @@ public class SwitchController : MonoBehaviour {
 
     public bool isOn = false;
     public bool canSwitchBackOff = false;
+    public float switchBackTime = 0.5f;
     public Animator anim;
 
 	// Use this for initialization
@@ -49,6 +50,17 @@ public class SwitchController : MonoBehaviour {
         {
             isOn = true;
             anim.SetBool("isOn", true);
+            if (switchBackTime > 0)
+            {
+                StartCoroutine(switchBack(switchBackTime));
+            }
         }
+    }
+
+    IEnumerator switchBack(float time)
+    {
+        yield return new WaitForSeconds(time);
+        isOn = false;
+        anim.SetBool("isOn", false);
     }
 }

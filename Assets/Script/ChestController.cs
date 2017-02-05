@@ -27,7 +27,7 @@ public class ChestController : MonoBehaviour {
         Debug.Log(coll.contacts[0].normal.y);
         if (coll.collider.tag == "Player" && coll.contacts[0].normal.y > 0.7 && Input.GetKey(KeyCode.W))
         {
-            isOpen = false;
+            isOpen = true;
             anim.SetBool("opened", true);
             gameController.unlockedItem[unlockedItem] = true;
             objectSprite.sprite = unlockedItemSprite;

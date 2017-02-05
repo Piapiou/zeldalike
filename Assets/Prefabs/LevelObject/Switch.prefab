@@ -134,6 +134,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isOn: 0
   canSwitchBackOff: 1
+  switchBackTime: 0
   anim: {fileID: 95000013403758360}
 --- !u!212 &212000013851561514
 SpriteRenderer:
