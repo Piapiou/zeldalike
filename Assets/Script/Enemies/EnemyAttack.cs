@@ -9,6 +9,7 @@ public class EnemyAttack : MonoBehaviour {
 	public bool resting = false;
 
 	public OctorokMovement movement;
+	public EnemyHealth health;
 	public GameObject projectilePrefab;
 	public Transform position;
 	private GameObject projectile;
@@ -42,13 +43,15 @@ public class EnemyAttack : MonoBehaviour {
 
 	void attack(){
 		if (!resting){
-			if (projectile == null) {
-				anim.SetBool ("shooting", true);
-				projectile = GameObject.Instantiate (projectilePrefab);
-				projectile.GetComponent<ProjectileMovement> ().setDir (dir);
-				projectile.transform.position = setProjectilePosition ();
-				resting = true;
-				StartCoroutine (Rest (0.5f));
+			if (health.lifePoints > 0) {
+				if (projectile == null) {
+					anim.SetBool ("shooting", true);
+					projectile = GameObject.Instantiate (projectilePrefab);
+					projectile.GetComponent<ProjectileMovement> ().setDir (dir);
+					projectile.transform.position = setProjectilePosition ();
+					resting = true;
+					StartCoroutine (Rest (0.5f));
+				}
 			}
 		}
 	}
