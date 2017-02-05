@@ -25,7 +25,27 @@ namespace Assets.Script.Item
             if (bomb == null)
             {
                 bomb = GameObject.Instantiate(bombPrefab);
-                bomb.transform.position = player.transform.position;
+                int dir = player.GetComponent<playerController>().direction;
+                Vector2 pos = player.transform.position;
+                Debug.Log(dir);
+                switch (dir)
+                {
+                    case 0:
+                        pos += new Vector2(0.0f, 0.08f);
+                        break;
+                    case 1:
+                        pos += new Vector2(0.4f, -0.32f);
+                        break;
+                    case 2:
+                        pos += new Vector2(0.0f, -0.72f);
+                        break;
+                    case 3:
+                        pos += new Vector2(-0.4f, -0.32f);
+                        break;
+                    default:
+                        break;
+                }
+                bomb.transform.position = pos;
             }
         }
 

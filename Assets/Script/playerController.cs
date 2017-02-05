@@ -5,6 +5,7 @@ using UnityEngine.UI;
 public class playerController : MonoBehaviour {
 
     public GameController gameController;
+    public SpriteRenderer sprite;
 
     public int maxHealth = 16;
     public int health = 16;
@@ -162,9 +163,20 @@ public class playerController : MonoBehaviour {
 		if (health > maxHealth){
 			health = maxHealth;
 		}
-        
+        StartCoroutine(Blink());
     }
     
+    IEnumerator Blink()
+    {
+        for (int n = 0; n < 3; n++)
+        {
+            sprite.color = Color.red;
+            yield return new WaitForSeconds(0.1f);
+            sprite.color = Color.white;
+            yield return new WaitForSeconds(0.1f);
+        }
+    }
+
     public bool isDead()
     {
         return (health <= 0);
